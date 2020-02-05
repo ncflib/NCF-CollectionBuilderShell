@@ -2,16 +2,16 @@
 # values set here help configure details of individual pages in the website
 
 # Home page
-featured-image-objectid: demo_psychiana548 # use number of photo from collection
+featured-image-objectid: special692 # use number of photo from collection
 featured-image-link:  # leave blank unless no cdm number to generate item 
 home-title-y-padding: 12em # the margin from the top your title portion will appear.
-home-banner-image-position: center # [options: top, center, bottom] Default: top
+home-banner-image-position: top # [options: top, center, bottom] Default: top
 carousel-height: # in px, but don't include the "px"; default is 450.
 # carousel can feature specific item types: image,pdf,youtube,thumbs
-carousel-type: image
+carousel-type: image,pdf
 featured-subjects: #separate semi-colon(';') - if left blank, will be automatically generated to create top 5 subjects
 featured-subjects-max: 6 # set number of top subjects to display if auto generating
-featured-locations: Moscow, ID #separate by semi-colon(';') - if left blank, will be automatically generated to create top 5 locations
+featured-locations: #separate by semi-colon(';') - if left blank, will be automatically generated to create top 5 locations
 featured-locations-max: 3
 
 # Browse page
@@ -50,9 +50,9 @@ year-nav-increment: 5 # set increments to auto gen nav years
 # Data 
 # add metadata fields for export in data downloads (tip: paste in first row of csv)
 # comma delimited list, reference url is automatic
-metadata-export-fields: "title,description,creator,recipient,date,date-is-approximate,latitude,longitude,item-information,subject,related-publication,publisher-digital,source,original-identifier,identifier,rights,rightsstatement,type,format,language,relation,cdmid,objectid,youtubeid"
+metadata-export-fields: "briefitem,bibid,systemfolder,objectid,vid,publisher,format,pdf_name,pdf,title,image_name,thumb,image,imageid,measurements,title_alternative,title_original,subject,source_institution,rights,rightsstatement,type,description_physical,note,permanentlink,language,date_modified,date_created,format_original,holding_location,genre,publication_date,Collection,description,short_description"
 # generate a facets list for given fields, comma delimited
-metadata-facets-fields: "subject,creator,format"
+metadata-facets-fields: "title_original,subject,creator,format"
 
 # Advanced Theme Options
 

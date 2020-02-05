@@ -1,0 +1,21 @@
+I"3<h2 id="google-site-search">Google Site Search</h2>
+
+<div class="alert alert-primary" role="alert">
+  Please note: Site Search is a free service provided by Google. Results depend on third party indexing.
+</div>
+
+<script>
+  (function() {
+    var cx = '';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<gcse:search></gcse:search>
+
+:ET

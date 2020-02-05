@@ -1,0 +1,86 @@
+I"�<style>
+#jumbo-feature {
+    background-image: url('http://ncf.sobek.ufl.edu/content/NC/F0/00/14/09/00001/SF062.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+</style>
+
+<div class="jumbotron feature px-0 py-5 border" id="jumbo-feature">
+    <div id="home-title-box">
+        <div class="title-card p-2 text-center">
+            <h1 class="display-4">NCF Special Formats</h1>
+            <p id="home-tagline">NCF Specials Formats</p>
+        </div>
+    </div>
+</div>
+
+<h3 id="about-the-ncf-special-formats">About the NCF Special Formats</h3>
+
+<p>NCF Specials Formats</p>
+
+<p>The Schoenberg Manuscript Collection contains images and information related to the items donated to New College of Florida by Lawrence Schoenberg.</p>
+
+<p>Cataloguing note: Since it was mainly designed to accommodate modern (generally printed) materials, the SUS Sobek database used by New College employs categories that do not always map precisely to the categories traditionally used for cataloguing medieval manuscripts. The following equivalencies should therefore be understood when using the Schoenberg Manuscript Collection database:</p>
+
+<table class="table table-striped border w-50">
+	<tbody>
+		<tr>
+			<td><strong>Sobek</strong></td>
+			<td><strong>Traditional Manuscript Catalogue</strong></td>
+		</tr>
+		<tr>
+			<td>Title</td>
+			<td>Short Description</td>
+		</tr>
+		<tr>
+			<td>Alternate Title</td>
+			<td>Shelfmark</td>
+		</tr>
+		<tr>
+			<td>Publication Date</td>
+			<td>Date of Origin</td>
+		</tr>
+		<tr>
+			<td>Spatial Coverage</td>
+			<td>Place of Origin</td>
+		</tr>
+		<tr>
+			<td>Summary</td>
+			<td>Physical Description</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Finally, notes on script can be found under the final heading, “General Note.”</p>
+
+<div class="card my-4">
+<h5 class="card-header">Technical</h5>
+<div class="card-body">
+<div class="card-text">
+
+      <p><a href="https://collectionbuilder.github.io/">CollectionBuilder</a> is an open source tool for creating digital collection and exhibit websites that are driven by metadata and powered by modern static web technology. CollectionBuilder is a project of University of Idaho Library’s <a href="https://www.lib.uidaho.edu/digital/">Digital Initiatives</a> and the University’s <a href="https://cdil.lib.uidaho.edu/">Center for Digital Inquiry and Learning (CDIL)</a>. It was built following the <a href="https://lib-static.github.io">Lib-STATIC</a> methodology.</p>
+
+      <p>This site is built using <a href="https://github.com/CollectionBuilder/collectionbuilder-contentdm">CollectionBuilder-CDM</a> which utilizes <a href="https://www.oclc.org/en/contentdm.html">CONTENTdm</a> APIs to create an engaging “skin” on top of an existing digital collection repository.</p>
+
+      <h3 id="software-and-tools-used">Software and Tools Used</h3>
+
+      <p>Powered by the open source static site generator <a href="https://jekyllrb.com/">Jekyll</a> and a modern static web stack, it puts collection metadata to work building beautiful sites.</p>
+
+      <p>The basic frame work is created using <a href="https://getbootstrap.com/">Bootstrap</a> and <a href="https://jquery.com/">jQuery</a>.</p>
+
+      <p>Metadata visualizations are built using open source libraries such as <a href="https://datatables.net/">DataTables</a>, <a href="http://leafletjs.com/">Leafletjs</a>, <a href="http://sachinchoolur.github.io/lightGallery/">lightGallery</a>, <a href="https://timeline.knightlab.com/">TimelineJS</a>, <a href="https://fontawesome.com/">FontAwesome</a>, <a href="https://github.com/aFarkas/lazysizes">lazysizes</a>, and <a href="https://lunrjs.com/">Lunr.js</a>.</p>
+
+      <p>Object metadata is exposed using <a href="http://schema.org">Schema.org</a> and <a href="http://ogp.me/">Open Graph protocol</a> standards.</p>
+
+      <p>Questions can be directed to <strong>libstatic.uidaho@gmail.com</strong></p>
+
+      <p>Get the <a href="https://github.com/CollectionBuilder">Source code</a> for this site!</p>
+
+      <p>Last build date: 2020-02-05.</p>
+
+    </div>
+</div>
+</div>
+:ET

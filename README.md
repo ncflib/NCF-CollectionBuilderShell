@@ -1,6 +1,14 @@
-# NCF Special Formats Collection
+# CollectionBuilder-CONTENTdm
 
+CollectionBuilder-CONTENTdm is a template for creating digital collection exhibits on top of existing CONTENTdm repositories.
 
+CollectionBuilder-CONTENTdm utilizes [CONTENTdm](https://www.oclc.org/en/contentdm.html) API's to create an engaging "skin" on top of an existing digital collection repository using your existing collection metadata.
+[CollectionBuilder](https://github.com/CollectionBuilder/) is an open source tool for creating digital collection and exhibit websites that are driven by metadata and powered by modern static web technology.
+
+Visit the [CollectionBuilder home](https://collectionbuilder.github.io/) for more information about getting started!
+
+If you are interested in using CollectionBuilder, or are already using it, please drop us a line (**libstatic.uidaho@gmail.com**) since we would love to learn more about it's use in the wild. 
+There are also currently opportunities to [collaborate on CollectionBuilder](https://collectionbuilder.github.io/about.html#the-grant).
 
 ----------
 
