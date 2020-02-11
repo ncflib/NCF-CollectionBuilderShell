@@ -32,7 +32,7 @@ with open(filename, 'w') as csvfile:
             csvwriter = csv.writer(csvfile) 
               
             # writing the fields 
-            csvwriter.writerow(["objectid","cdmid","title","format","thumb","images","source","date","creator"])
+            csvwriter.writerow(["objectid","cdmid","title","format","thumb","images","source","date","creator","subjects","generalnote","sourceofdescription"])
 i = 1
 a = 1
 while(i<39):
@@ -88,6 +88,29 @@ while(i<39):
             print(creator)
             creator = creator[0].text.strip()
 
+        if "Subjects.Display" in str(detaildiv):
+            subjects = re.search(r"<dt>Subjects.Display:</dt>.*?\n", str(detaildiv)).group(0)
+            subjects = BeautifulSoup(subjects,'html.parser')
+            subjects = subjects.findAll("dd")
+            print(subjects)
+
+        newraw_html = simple_get(tlink+'/00001/citation')
+        newhtml = BeautifulSoup(newraw_html,'html.parser')
+
+        generalnote=""
+        notes = newhtml.findAll("dd", {"class": "sbk_CivGENERAL_NOTE_Element"})
+        for note in notes:
+            if note.find("span") and "This bibliographic record is available under the Creative Commons CC0 public" not in note.text:
+                generalnote = note.text
+        print(generalnote)
+
+        sourceofdescription=""
+        sourceofdescriptions = newhtml.findAll("dd", {"class": "sbk_CivSOURCE_OF_DESCRIPTION_Element"})
+        for source in sourceofdescriptions:
+            if source.find("span"):
+                sourceofdescription = source.text
+        print("sourceofdesc")
+        print(sourceofdescription)
 
         with open(filename, 'a') as csvfile: 
             # creating a csv writer object 
@@ -98,8 +121,16 @@ while(i<39):
             for image in images[:-1]:
                 imagestext = imagestext + image + ";"
             imagestext = imagestext + images[-1]
-            imagethm = images[0];
-            csvwriter.writerow(["special"+str(a),a,title.text,"image/jpeg",imagethm,imagestext,tlink,date,creator])
+
+            subjectstext = ""
+            for subject in subjects[:-1]:
+                subjectstext = subjectstext + subject.text.strip().replace(" -- New College (Sarasota, Fla.)","") + ";"
+            subjectstext = subjectstext + subjects[-1].text.strip().replace(" -- New College (Sarasota, Fla.)","")
+
+            #imagethm = images[0].replace(".jpg","thm.jpg");
+            imagethm = images[0]
+
+            csvwriter.writerow(["special"+str(a),a,title.text,"image/jpeg",imagethm,imagestext,tlink,date,creator,subjectstext,generalnote,sourceofdescription])
             a+=1
 
         print('----------------------------------')
