@@ -1,18 +1,9 @@
 { "subjects": [
-    { "subject" : "history", "count" : 738, "link" : "https://dss.ncf.edu/specialformats/browse.html#history" },
-    { "subject" : "slides (photography)", "count" : 685, "link" : "https://dss.ncf.edu/specialformats/browse.html#slides%20(photography)" },
-    { "subject" : "college students and faculty", "count" : 188, "link" : "https://dss.ncf.edu/specialformats/browse.html#college%20students%20and%20faculty" },
-    { "subject" : "west campus", "count" : 150, "link" : "https://dss.ncf.edu/specialformats/browse.html#west%20campus" },
-    { "subject" : "miscellaneous photographs", "count" : 139, "link" : "https://dss.ncf.edu/specialformats/browse.html#miscellaneous%20photographs" },
-    { "subject" : "east campus", "count" : 111, "link" : "https://dss.ncf.edu/specialformats/browse.html#east%20campus" },
-    { "subject" : "office of admissions", "count" : 104, "link" : "https://dss.ncf.edu/specialformats/browse.html#office%20of%20admissions" },
-    { "subject" : "photographs", "count" : 55, "link" : "https://dss.ncf.edu/specialformats/browse.html#photographs" },
-    { "subject" : "viewbooks", "count" : 37, "link" : "https://dss.ncf.edu/specialformats/browse.html#viewbooks" },
-    { "subject" : "special events", "count" : 18, "link" : "https://dss.ncf.edu/specialformats/browse.html#special%20events" },
-    { "subject" : "negatives (photography)", "count" : 3, "link" : "https://dss.ncf.edu/specialformats/browse.html#negatives%20(photography)" },
-    { "subject" : "i. m. pei", "count" : 2, "link" : "https://dss.ncf.edu/specialformats/browse.html#i.%20m.%20pei" },
-    { "subject" : "history -- university of south florida (sarasota, fla.)", "count" : 2, "link" : "https://dss.ncf.edu/specialformats/browse.html#history%20--%20university%20of%20south%20florida%20(sarasota,%20fla.)" },
-    { "subject" : "negatives (photography) -- university of south florida (sarasota, fla.)", "count" : 2, "link" : "https://dss.ncf.edu/specialformats/browse.html#negatives%20(photography)%20--%20university%20of%20south%20florida%20(sarasota,%20fla.)" },
-    { "subject" : "special events -- university of south florida (sarasota, fla.)", "count" : 2, "link" : "https://dss.ncf.edu/specialformats/browse.html#special%20events%20--%20university%20of%20south%20florida%20(sarasota,%20fla.)" },
-    { "subject" : "photographs -- (sarasota, fla.)", "count" : 1, "link" : "https://dss.ncf.edu/specialformats/browse.html#photographs%20--%20(sarasota,%20fla.)" }
+    { "subject" : "history", "count" : 840, "link" : "http://localhost:4000/specialformats/browse.html#history" },
+    { "subject" : "planning", "count" : 836, "link" : "http://localhost:4000/specialformats/browse.html#planning" },
+    { "subject" : "records and correspondence", "count" : 833, "link" : "http://localhost:4000/specialformats/browse.html#records%20and%20correspondence" },
+    { "subject" : "environmental studies program", "count" : 8, "link" : "http://localhost:4000/specialformats/browse.html#environmental%20studies%20program" },
+    { "subject" : "architecture", "count" : 2, "link" : "http://localhost:4000/specialformats/browse.html#architecture" },
+    { "subject" : "john w. gustad", "count" : 1, "link" : "http://localhost:4000/specialformats/browse.html#john%20w.%20gustad" },
+    { "subject" : "i. m. pei", "count" : 1, "link" : "http://localhost:4000/specialformats/browse.html#i.%20m.%20pei" }
 ]}

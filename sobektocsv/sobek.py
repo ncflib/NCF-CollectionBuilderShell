@@ -21,8 +21,6 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-COLLECTIONNAME = "affairs"
-
 def simple_get(url):
     try:
         with closing(requests.get(url, stream=True)) as resp:
@@ -56,6 +54,16 @@ with open(filename, 'w') as csvfile:
 i = 1 # the current page number
 a = 1 # the current number of the object
 
+
+
+print(bcolors.OKBLUE + bcolors.BOLD)
+print(bcolors.OKBLUE + "SOBEK TO CSV PYTHON SCRIPT \nNew College of Florida\nDigital Scholarship Studio\n~this feels like 90s" + bcolors.ENDC)
+
+print("\nBefore you start, make sure you have the correct collectionname. ")
+print("For example, collectionname is "+ bcolors.UNDERLINE + "affairs" + bcolors.ENDC + " if the link is http://ncf.sobek.ufl.edu/affairs/ \n")
+
+COLLECTIONNAME = input("Enter the collection name: ") 
+
 page = "http://ncf.sobek.ufl.edu/"+COLLECTIONNAME+"/all/brief/"+str(i) ## To get the number of total pages automatically
 raw_html = simple_get(page)
 html = BeautifulSoup(raw_html,'html.parser')
@@ -64,13 +72,11 @@ last = last.get('onclick')
 last = re.search(r"/all/brief/(.*)'; return false", last).group(1)
 NUMOFPAGES = int(last)
 
-print(bcolors.OKBLUE + bcolors.BOLD)
-print(bcolors.OKBLUE + "SOBEK TO CSV PYTHON SCRIPT \nNew College of Florida\nDigital Scholarship Studio" + bcolors.ENDC)
 print("COLLECTION: ", COLLECTIONNAME)
 print("NUMBER OF PAGES: ", NUMOFPAGES)
 print("OUTPUT FILE NAME: ",filename)
 print(bcolors.OKGREEN)
-print(" \n \n ")
+print("\n")
 
 pbar = tqdm(total=(NUMOFPAGES-1)*20)
 
@@ -179,3 +185,5 @@ for i in range(NUMOFPAGES):
             a+=1
 
         pbar.update(1)
+pbar.finish()
+print("\n DONE. Please check the csv file.")

@@ -13,14 +13,13 @@
         {
             "field": "creator",
             "terms": { 
-                "new college of florida": 745,
-                "university of south florida - sarasota-manatee": 2
+                "new college of florida": 840
             }
         },
         {
             "field": "format",
             "terms": { 
-                "image/jpeg": 747
+                "application/pdf": 840
             }
         }
         

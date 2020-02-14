@@ -1,6 +1,6 @@
-I"ü<style>
+I"<style>
 #jumbo-feature {
-    background-image: url('http://ncf.sobek.ufl.edu/content/NC/F0/00/11/90/00001/Blue086.jpg');
+    background-image: url('http://ncf.sobek.ufl.edu/content/NC/F0/00/07/47/00001/News_Release_Apr_11_1968_Hometownthm.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
@@ -78,7 +78,7 @@
 
       <p>Get the <a href="https://github.com/CollectionBuilder">Source code</a> for this site!</p>
 
-      <p>Last build date: 2020-02-06.</p>
+      <p>Last build date: 2020-02-14.</p>
 
     </div>
 </div>
