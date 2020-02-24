@@ -89,13 +89,11 @@ for i in range(NUMOFPAGES):
     for item in items:
 
         images = []
+        subjects = []
         pdfs = [] # There is no compound PDFs but just in case.
 
         title = item.find("span", {"class": "briefResultsTitle"})
         tlink = title.find('a').get('href')
-
-
-
 
         imageCount = 1
         nextImage = True
@@ -174,7 +172,7 @@ for i in range(NUMOFPAGES):
                 imagestext = ';'.join(images)
             else:
                 imagestext = ';'.join(pdfs)
-
+            print(subjects)
             subjects[:] = [s.text.strip().replace(" -- New College (Sarasota, Fla.)","") for s in subjects]
             subjectstext = ';'.join(subjects)
 
