@@ -68,9 +68,12 @@ page = "http://ncf.sobek.ufl.edu/"+COLLECTIONNAME+"/all/brief/"+str(i) ## To get
 raw_html = simple_get(page)
 html = BeautifulSoup(raw_html,'html.parser')
 last = html.find('button', { "title" : "Last Page"})
-last = last.get('onclick')
-last = re.search(r"/all/brief/(.*)'; return false", last).group(1)
-NUMOFPAGES = int(last)
+if last != None:
+	last = last.get('onclick')
+	last = re.search(r"/all/brief/(.*)'; return false", last).group(1)
+	NUMOFPAGES = int(last)
+else:
+	NUMOFPAGES = 1
 
 print("COLLECTION: ", COLLECTIONNAME)
 print("NUMBER OF PAGES: ", NUMOFPAGES)
@@ -78,7 +81,7 @@ print("OUTPUT FILE NAME: ",filename)
 print(bcolors.OKGREEN)
 print("\n")
 
-pbar = tqdm(total=(NUMOFPAGES-1)*20)
+pbar = tqdm(total=(NUMOFPAGES)*20)
 
 for i in range(NUMOFPAGES):
     page = "http://ncf.sobek.ufl.edu/"+COLLECTIONNAME+"/all/brief/"+str(i)
@@ -98,30 +101,48 @@ for i in range(NUMOFPAGES):
         imageCount = 1
         nextImage = True
         doctype = "image/jpeg"
+        volume = False
+        if "All Volumes" in str(simple_get(tlink)):
+            volume = True
+            links = list()
+            newraw_html = BeautifulSoup(simple_get(tlink+'/allvolumes2/'),'html.parser')
+            tables = newraw_html.findAll("table", {"class" : "sbkMviv_Thumbnail"})
+            for table in tables:
+                pdf = table.find('a').get('href')
+                links.append(pdf)
+            
 
-        while nextImage:
-
-            if imageCount == 1:
-                newraw_html = simple_get(tlink+'/00001/')
-            else:
-                newraw_html = simple_get(tlink+'/00001/'+str(imageCount)+'j')
-
-            newhtml = BeautifulSoup(newraw_html,'html.parser')
-
-            if newhtml.find('img', {"itemprop" : "primaryImageOfPage"}):
-                image = newhtml.find('img', {"itemprop" : "primaryImageOfPage"}).get('src')
-                images.append(image)
-                if newhtml.find('span', {"class" : "sbkIsw_RightPaginationButtons"}):
-                    imageCount+=1
-                else:
-                    nextImage = False
-
-            elif newhtml.find('a', { "id" : "sbkPdf_DownloadFileLink"}):
-                pdf = newhtml.find('a', { "id" : "sbkPdf_DownloadFileLink"}).get('href')
+            for link in links:
+                newraw_html = simple_get(link)
+                html = BeautifulSoup(newraw_html,'html.parser')
+                pdf = html.find('a', { "id" : "sbkPdf_DownloadFileLink"}).get('href')
                 pdfs.append(pdf)
                 doctype = "application/pdf"
-                nextImage = False
-                break;
+
+        else:
+            while nextImage:
+
+                if imageCount == 1:
+                    newraw_html = simple_get(tlink+'/00001/')
+                else:
+                    newraw_html = simple_get(tlink+'/00001/'+str(imageCount)+'j')
+
+                newhtml = BeautifulSoup(newraw_html,'html.parser')
+
+                if newhtml.find('img', {"itemprop" : "primaryImageOfPage"}):
+                    image = newhtml.find('img', {"itemprop" : "primaryImageOfPage"}).get('src')
+                    images.append(image)
+                    if newhtml.find('span', {"class" : "sbkIsw_RightPaginationButtons"}):
+                        imageCount+=1
+                    else:
+                        nextImage = False
+
+                elif newhtml.find('a', { "id" : "sbkPdf_DownloadFileLink"}):
+                    pdf = newhtml.find('a', { "id" : "sbkPdf_DownloadFileLink"}).get('href')
+                    pdfs.append(pdf)
+                    doctype = "application/pdf"
+                    nextImage = False
+                    break;
 
         
 
@@ -172,16 +193,19 @@ for i in range(NUMOFPAGES):
                 imagestext = ';'.join(images)
             else:
                 imagestext = ';'.join(pdfs)
-            print(subjects)
             subjects[:] = [s.text.strip().replace(" -- New College (Sarasota, Fla.)","") for s in subjects]
             subjectstext = ';'.join(subjects)
 
             if doctype == "image/jpeg":
                 imagethm = images[0]
 
-            csvwriter.writerow(["special"+str(a),a,title.text,doctype,imagethm,imagestext,tlink,date,creator,subjectstext,generalnote,sourceofdescription])
+            if volume == True:
+                index = 1
+                for pdf in pdfs:
+                    csvwriter.writerow(["special"+str(a),a,title.text + " - " + str(index),doctype,imagethm,pdf,tlink,date,creator,subjectstext,generalnote,sourceofdescription])
+                    index=index+1
             a+=1
 
         pbar.update(1)
-pbar.finish()
+pbar.close()
 print("\n DONE. Please check the csv file.")
