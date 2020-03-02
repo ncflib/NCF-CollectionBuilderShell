@@ -83,14 +83,12 @@ print("\n")
 
 pbar = tqdm(total=(NUMOFPAGES)*20)
 
-for i in range(NUMOFPAGES):
+for i in range(1,NUMOFPAGES+1):
     page = "http://ncf.sobek.ufl.edu/"+COLLECTIONNAME+"/all/brief/"+str(i)
     raw_html = simple_get(page)
     html = BeautifulSoup(raw_html,'html.parser')
     items = html.findAll("section", {"class": "sbkBrv_SingleResult"})
-
     for item in items:
-
         images = []
         subjects = []
         pdfs = [] # There is no compound PDFs but just in case.
@@ -103,6 +101,7 @@ for i in range(NUMOFPAGES):
         doctype = "image/jpeg"
         volume = False
         if "All Volumes" in str(simple_get(tlink)):
+            print("all volumes")
             volume = True
             links = list()
             newraw_html = BeautifulSoup(simple_get(tlink+'/allvolumes2/'),'html.parser')
@@ -138,6 +137,8 @@ for i in range(NUMOFPAGES):
                         nextImage = False
 
                 elif newhtml.find('a', { "id" : "sbkPdf_DownloadFileLink"}):
+                    #print(tlink+'/00001/'+str(imageCount)+'j')
+                    #print("pdf link volumes")
                     pdf = newhtml.find('a', { "id" : "sbkPdf_DownloadFileLink"}).get('href')
                     pdfs.append(pdf)
                     doctype = "application/pdf"
@@ -185,6 +186,8 @@ for i in range(NUMOFPAGES):
             if source.find("span"):
                 sourceofdescription = source.text
 
+        #print(title.text)
+
         with open(filename, 'a') as csvfile: 
             # creating a csv writer object 
             csvwriter = csv.writer(csvfile) 
@@ -204,7 +207,10 @@ for i in range(NUMOFPAGES):
                 for pdf in pdfs:
                     csvwriter.writerow(["special"+str(a),a,title.text + " - " + str(index),doctype,imagethm,pdf,tlink,date,creator,subjectstext,generalnote,sourceofdescription])
                     index=index+1
-            a+=1
+                    a+=1
+            else:
+                csvwriter.writerow(["special"+str(a),a,title.text,doctype,imagethm,imagestext,tlink,date,creator,subjectstext,generalnote,sourceofdescription])
+                a+=1
 
         pbar.update(1)
 pbar.close()
